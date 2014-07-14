@@ -8,7 +8,15 @@ describe "Our order processor" do
     it "generates a packing slip for shipping" do
       phisical_product= Product.new(:phisical)
       a_payment= Payment.new(phisical_product)
-      expect(Processor.process(a_payment)).to be_a(PackingSlip)
+      the_slip = Processor.process(a_payment)
+      expect(the_slip).to be_a(PackingSlip)
+      expect(the_slip.owner).to eq(:shipping)
+    end
+  end
+
+  context 'when the payment is for a book' do
+    it "generates another packing slip for royalty department" do
+      
     end
   end
 end
