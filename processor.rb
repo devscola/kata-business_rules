@@ -1,12 +1,14 @@
+require './processed_order'
 require './packing_slip'
 
 class Processor
 
   def self.process payment
-    slips=generate_slips(payment)
+    result = ProcessedOrder.new
+    result.slips=generate_slips(payment)
     payment.fulfilled()
     
-    slips
+    result
   end
 
   

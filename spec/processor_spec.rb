@@ -1,3 +1,4 @@
+require './processed_order'
 require './processor'
 require './product'
 require './payment'
@@ -11,7 +12,7 @@ describe "Our order processor" do
       phisical_product= Product.new(:phisical)
       a_payment= Payment.new(phisical_product)
       
-      the_slip = Processor.process(a_payment).first
+      the_slip = Processor.process(a_payment).slips.first
       
       expect(the_slip).to be_a(PackingSlip)
       expect(the_slip.from_whom).to eq(:shipping)
@@ -24,9 +25,9 @@ describe "Our order processor" do
       a_payment= Payment.new(a_book)
 
       processed_order = Processor.process(a_payment)
-      the_slip = processed_order[1]
+      the_slip = processed_order.slips[1]
       
-      expect(processed_order.size).to eq(2)
+      expect(processed_order.slips.size).to eq(2)
       expect(the_slip.from_whom).to eq(:royalty)
     end
   end
