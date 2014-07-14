@@ -42,6 +42,16 @@ describe "Our order processor" do
       
       expect(a_membership.is_active?).to be_true()
     end
+
+    it "sends a mail informing about the activation" do
+      a_membership = Membership.new
+      a_payment= Payment.new(a_membership)
+
+      processed_order = Processor.process(a_payment)
+      
+      expect(processed_order.mails.size).to eq(1)
+      expect(processed_order.mails.first).to eq("Your membership has been activated")
+    end
   end
 
   context 'when the payment is for a upgrade of a membership' do
@@ -54,6 +64,16 @@ describe "Our order processor" do
       processed_order = Processor.process(a_payment)
       
       expect(a_membership.upgraded?).to be_true()
+    end
+
+    it "send a mail informing of the upgrade" do
+      a_membership = Membership.new
+      an_upgrade = Upgrade.new(a_membership)
+      a_payment= Payment.new(an_upgrade)
+      
+      processed_order = Processor.process(a_payment)
+      expect(processed_order.mails.size).to eq(1)
+      expect(processed_order.mails.first).to eq("Your membership has been updates")
     end
   end
 end
