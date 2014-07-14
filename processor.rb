@@ -3,13 +3,19 @@ require './packing_slip'
 class Processor
 
   def self.process payment
-    processed_order=[]
-    
-    processed_order << PackingSlip.new(:shipping)
-    processed_order << PackingSlip.new(:royalty) if payment.is_for_a_book?
-    
+    slips=generate_slips(payment)
     payment.fulfilled()
-
-    processed_order
+    
+    slips
   end
+
+  
+  def self.generate_slips payment
+    slips=[]
+    
+    slips << PackingSlip.new(:shipping)
+    slips << PackingSlip.new(:royalty) if payment.is_for_a_book?
+    slips
+  end
+
 end
