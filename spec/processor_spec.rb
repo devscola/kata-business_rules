@@ -72,8 +72,9 @@ describe "Our order processor" do
       a_payment= Payment.new(an_upgrade)
       
       processed_order = Processor.process(a_payment)
+
       expect(processed_order.mails.size).to eq(1)
-      expect(processed_order.mails.first).to eq("Your membership has been updates")
+      expect(processed_order.mails.first).to eq("Your membership has been upgraded")
     end
   end
 end

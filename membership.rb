@@ -17,10 +17,12 @@ class Membership < Product
 
   def activate
     @active=true
+    "Your membership has been activated"
   end
 
   def upgrade
     @upgraded = true
+    "Your membership has been upgraded"
   end
   
   def upgraded?

@@ -5,8 +5,8 @@ class Processor
 
   def self.process payment
     result = ProcessedOrder.new
-    result.slips=generate_slips(payment)
-    payment.fulfilled()
+    result.slips = generate_slips(payment)
+    result.mails = payment.fulfilled()
     
     result
   end

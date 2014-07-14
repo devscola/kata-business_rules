@@ -8,7 +8,9 @@ class Payment
   end
 
   def fulfilled
-    @product.activate if @product.is_a_membership?
-    @product.upgrade if @product.is_an_upgrade?
+    mails=[]
+    mails << @product.activate if @product.is_a_membership?
+    mails << @product.upgrade if @product.is_an_upgrade?
+    mails
   end
 end
