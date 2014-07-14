@@ -2,6 +2,7 @@ require './processor'
 require './product'
 require './payment'
 require './packing_slip'
+require './membership'
 
 describe "Our order processor" do
   context 'when processing a phisical product' do
@@ -26,6 +27,18 @@ describe "Our order processor" do
       
       expect(processed_order.size).to eq(2)
       expect(the_slip.from_whom).to eq(:royalty)
+    end
+  end
+
+  context 'when the payment is for a membership' do
+    it "activates the membership" do
+      a_membership = Membership.new
+      a_payment= Payment.new(a_membership)
+      expect(a_membership.is_active?).to be_false()
+
+      processed_order = Processor.process(a_payment)
+      
+      expect(a_membership.is_active?).to be_true()
     end
   end
 end
