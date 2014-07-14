@@ -18,4 +18,8 @@ class Membership < Product
   def activate
     @active=true
   end
+
+  def upgraded?
+    false
+  end
 end

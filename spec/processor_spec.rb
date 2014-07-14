@@ -3,6 +3,7 @@ require './product'
 require './payment'
 require './packing_slip'
 require './membership'
+require './upgrade'
 
 describe "Our order processor" do
   context 'when processing a phisical product' do
@@ -39,6 +40,19 @@ describe "Our order processor" do
       processed_order = Processor.process(a_payment)
       
       expect(a_membership.is_active?).to be_true()
+    end
+  end
+
+  context 'when the payment is for a upgrade of a membership' do
+    it "upgrade the membership" do
+      a_membership = Membership.new
+      an_upgrade = Upgrade.new(a_membership)
+      a_payment= Payment.new(an_upgrade)
+      expect(a_membership.upgraded?).to be_false()
+
+      processed_order = Processor.process(a_payment)
+      
+      expect(a_membership.upgraded?).to be_true()
     end
   end
 end
