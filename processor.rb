@@ -2,6 +2,6 @@ require './packing_slip'
 
 class Processor
   def self.process payment
-    PackingSlip.new()
+    [PackingSlip.new()]
   end
 end
