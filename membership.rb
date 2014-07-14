@@ -19,7 +19,11 @@ class Membership < Product
     @active=true
   end
 
+  def upgrade
+    @upgraded = true
+  end
+  
   def upgraded?
-    false
+    @upgraded
   end
 end

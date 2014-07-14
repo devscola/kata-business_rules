@@ -11,4 +11,8 @@ class Product
     false
   end 
 
+  def is_an_upgrade?
+    false
+  end 
+
 end

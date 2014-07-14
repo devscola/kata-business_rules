@@ -9,5 +9,6 @@ class Payment
 
   def fulfilled
     @product.activate if @product.is_a_membership?
+    @product.upgrade if @product.is_an_upgrade?
   end
 end
