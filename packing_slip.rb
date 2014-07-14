@@ -4,7 +4,7 @@ class PackingSlip
     @owner=owner
   end
 
-  def owner
+  def from_whom
     @owner
   end
 end

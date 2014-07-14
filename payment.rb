@@ -3,7 +3,7 @@ class Payment
     @product = product
   end
 
-  def is_a_book?
+  def is_for_a_book?
     @product.is_a_book?
   end
 end
