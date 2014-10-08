@@ -1,4 +1,4 @@
-Kata MarsRover
--------------
+Kata Business Rules
+-------------------
 
-En este Coding Dojo trabajamos la kata [MarsRover](http://amirrajan.net/Blog/code-katas-mars-rover/#sthash.5r96OMl3.dpuf).
+En este Coding Dojo trabajamos la kata [Business Rules](http://codekata.com/kata/kata16-business-rules/).
