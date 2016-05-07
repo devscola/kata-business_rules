@@ -11,6 +11,5 @@ class Upgrade<Product
 
   def upgrade
     @subject.upgrade
-    "Your membership has been upgraded"
   end
 end
